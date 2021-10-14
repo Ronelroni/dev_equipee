@@ -43,6 +43,12 @@ class TeamsController < ApplicationController
     end
   end
 
+  def owner_change
+    @working_team.owner_id = params[:id]
+    @working_team.save
+    redirect_to team_path(@working_team)
+  end
+
   def destroy
     @team.destroy
     redirect_to teams_url, notice: I18n.t('views.messages.delete_team')
