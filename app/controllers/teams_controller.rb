@@ -48,7 +48,6 @@ class TeamsController < ApplicationController
     @working_team.save
     redirect_to team_path(@working_team)
   end
-
   def destroy
     @team.destroy
     redirect_to teams_url, notice: I18n.t('views.messages.delete_team')
@@ -67,4 +66,5 @@ class TeamsController < ApplicationController
   def team_params
     params.fetch(:team, {}).permit %i[name icon icon_cache owner_id keep_team_id]
   end
+  
 end
