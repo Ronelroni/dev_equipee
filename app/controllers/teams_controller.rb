@@ -44,8 +44,10 @@ class TeamsController < ApplicationController
   end
 
   def owner_change
+    @user=User.find(params[:id])
     @working_team.owner_id = params[:id]
     @working_team.save
+    AutorisationMailer.autorisation_mail(@user).deliver
     redirect_to team_path(@working_team)
   end
   def destroy
